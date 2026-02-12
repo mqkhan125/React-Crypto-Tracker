@@ -1,0 +1,33 @@
+.container {
+  width: 1000px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: lightblue;
+}
+
+thead tr th {
+  padding: 11px;
+}
+
+tbody tr td {
+  padding: 18px;
+}
+
+.icons{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.icons img{
+  width: 40px;
+}

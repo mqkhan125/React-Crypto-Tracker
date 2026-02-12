@@ -52,25 +52,31 @@ const CurrencyTracker = () => {
             <th>Rank</th>
             <th>Name</th>
             <th>Symbol</th>
-            <th>Market Cap</th>
+            <th>MarketCap</th>
+            <th>MarketCapScore</th>
             <th>Price</th>
-            <th>Available Supply</th>
-            <th>Price</th>
+            <th>AvailableSupply</th>
+            <th>TotalAvailableSupply</th>
            </tr>
         </thead>
               <tbody>
                 {
                     filteredData.map((crypto) => {
                         return (
-                            <tr key={crypto.id}>
-                                <td>{crypto.rank}</td>
-                                <td>{crypto.name}</td>
-                                <td>{crypto.symbol}</td>
-                                <td>{crypto.marketCap}</td>
-                                <td>{crypto.price}</td>
-                                <td>{crypto.availableSupply}</td>
-                            </tr>
-                        )
+                          <tr key={crypto.id}>
+                            <td>{crypto.rank}</td>
+                            <div className="icons">
+                              <img src={crypto.icon} alt={crypto.name} />
+                              <td>{crypto.name}</td>
+                            </div>
+                            <td>{crypto.symbol}</td>
+                            <td>{crypto.marketCap}</td>
+                            <td>{crypto.marketCapScore}</td>
+                            <td>{crypto.price}</td>
+                            <td>{crypto.availableSupply}</td>
+                            <td>{crypto.totalSupply}</td>
+                          </tr>
+                        );
                     })
                 }
               </tbody>
