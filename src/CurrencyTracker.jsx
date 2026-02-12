@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 const CurrencyTracker = () => {
 
     const [cryptoData, setCryptoData] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
 
     // fetching data from the API
   const fetchData = async () => {
@@ -28,13 +29,21 @@ const CurrencyTracker = () => {
     fetchData();
   }, []);    
 
+  const handleInput = (event) => {
+    setSearchTerm(event.target.value)
+    console.log(event.target.value)
+  }
+
+  const filteredData = cryptoData.filter((crypto) => {
+    return crypto.name.toLowerCase().includes(searchTerm.toLowerCase())
+  })  
 
   return (
     <div className="container">
 
         <div>
         <h1>CryptoCurrency Price Tracking</h1>
-        <input type="text" placeholder="Search for a cryptocurrency..." />
+        <input type="text" name="search" id="searchInput" value={searchTerm} placeholder="Search for a cryptocurrency..." onChange={handleInput} />
         </div>
 
        <table>
@@ -51,7 +60,7 @@ const CurrencyTracker = () => {
         </thead>
               <tbody>
                 {
-                    cryptoData.map((crypto) => {
+                    filteredData.map((crypto) => {
                         return (
                             <tr key={crypto.id}>
                                 <td>{crypto.rank}</td>
