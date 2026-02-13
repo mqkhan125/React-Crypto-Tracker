@@ -42,7 +42,7 @@ const CurrencyTracker = () => {
     <div className="container">
 
         <div>
-        <h1>CryptoCurrency Price Tracking</h1>
+        <h1 className='title'>CryptoCurrency Price Tracking</h1>
         <input type="text" name="search" id="searchInput" value={searchTerm} placeholder="Search for a cryptocurrency..." onChange={handleInput} />
         </div>
 
@@ -57,6 +57,7 @@ const CurrencyTracker = () => {
             <th>Price</th>
             <th>AvailableSupply</th>
             <th>TotalAvailableSupply</th>
+            <th>Volume24h</th>
            </tr>
         </thead>
               <tbody>
@@ -65,16 +66,25 @@ const CurrencyTracker = () => {
                         return (
                           <tr key={crypto.id}>
                             <td>{crypto.rank}</td>
-                            <div className="icons">
-                              <img src={crypto.icon} alt={crypto.name} />
-                              <td>{crypto.name}</td>
-                            </div>
-                            <td>{crypto.symbol}</td>
-                            <td>{crypto.marketCap}</td>
-                            <td>{crypto.marketCapScore}</td>
-                            <td>{crypto.price}</td>
-                            <td>{crypto.availableSupply}</td>
-                            <td>{crypto.totalSupply}</td>
+
+                            <td>
+                              <div className="icons">
+                                <img
+                                  src={crypto.icon}
+                                  alt={crypto.name}
+                                  width="25"
+                                />
+                                {crypto.name}
+                              </div>
+                            </td>
+
+                            <td>{crypto?.symbol}</td>
+                            <td>{crypto?.marketCap.toFixed(2)}</td>
+                            <td>{crypto?.marketCapScore?.toFixed(2)}</td>
+                            <td>{crypto?.price.toFixed(2)}</td>
+                            <td>{crypto?.availableSupply}</td>
+                            <td>{crypto?.totalSupply}</td>
+                            <td>{crypto?.volume.toFixed(2)}</td>
                           </tr>
                         );
                     })
